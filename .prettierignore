@@ -1,0 +1,10 @@
+node_modules
+.next
+.turbo
+dist
+storybook-static
+coverage
+package-lock.json
+cypress/videos
+cypress/screenshots
+cypress/downloads
