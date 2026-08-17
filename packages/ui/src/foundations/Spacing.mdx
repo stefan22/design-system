@@ -1,0 +1,41 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Spacing" />
+
+# Spacing & Radius
+
+Spacing follows Tailwind's default 0.25rem (4px) base scale. Border radius
+is derived from a single `--radius` token in the shared theme
+(`packages/tailwind-config/src/theme.css`), so changing one value re-tunes
+every rounded corner in the system consistently:
+
+```css
+--radius: 0.625rem;
+--radius-sm: calc(var(--radius) - 4px);
+--radius-md: calc(var(--radius) - 2px);
+--radius-lg: var(--radius);
+--radius-xl: calc(var(--radius) + 4px);
+```
+
+<div className="not-prose grid grid-cols-4 gap-4 sm:grid-cols-8">
+  {[1, 2, 3, 4, 6, 8, 12, 16].map((n) => (
+    <div key={n} className="flex flex-col items-center gap-2">
+      <div
+        className="bg-primary"
+        style={{ width: `${n * 4}px`, height: `${n * 4}px` }}
+      />
+      <code className="text-xs">{n}</code>
+    </div>
+  ))}
+</div>
+
+## Radius scale
+
+<div className="not-prose flex flex-wrap gap-4">
+  {["sm", "md", "lg", "xl"].map((size) => (
+    <div key={size} className="flex flex-col items-center gap-2">
+      <div className={`size-16 border-2 border-primary rounded-${size}`} />
+      <code className="text-xs">rounded-{size}</code>
+    </div>
+  ))}
+</div>

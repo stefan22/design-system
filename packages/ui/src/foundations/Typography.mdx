@@ -1,0 +1,34 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+The design system uses two font stacks defined in the shared theme:
+
+- `--font-sans` — UI text (`font-sans`)
+- `--font-mono` — code / tabular values (`font-mono`)
+
+<div className="not-prose flex flex-col gap-4">
+  <p className="font-sans text-4xl font-bold">Sans 4xl Bold — Aa Bb Cc</p>
+  <p className="font-sans text-2xl font-semibold">Sans 2xl Semibold — Aa Bb Cc</p>
+  <p className="font-sans text-lg font-medium">Sans lg Medium — Aa Bb Cc</p>
+  <p className="font-sans text-base">Sans base Regular — Aa Bb Cc</p>
+  <p className="font-sans text-sm text-muted-foreground">
+    Sans sm Muted — Aa Bb Cc
+  </p>
+  <p className="font-mono text-sm">font-mono text-sm — const x = 42;</p>
+</div>
+
+## Scale
+
+| Class | Size | Typical use |
+| --- | --- | --- |
+| `text-xs` | 0.75rem | Captions, badges |
+| `text-sm` | 0.875rem | Body small, form helper text |
+| `text-base` | 1rem | Body |
+| `text-lg` | 1.125rem | Emphasized body / small headings |
+| `text-xl`–`text-4xl` | 1.25rem–2.25rem | Headings |
+
+Weights follow Tailwind's default scale (`font-normal`, `font-medium`,
+`font-semibold`, `font-bold`).

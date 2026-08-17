@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+All color tokens are defined once, as CSS variables, in
+`packages/tailwind-config/src/theme.css`. They are expressed in **OKLCH**
+for perceptually-uniform lightness across hues, and are re-mapped for dark
+mode by simply swapping the variable values under the `.dark` class — no
+component code changes between themes.
+
+Tailwind's `@theme` block turns each `--color-*` variable into a utility
+class, so e.g. `--color-primary` gives you `bg-primary`, `text-primary`,
+`border-primary`, etc.
+
+<div className="grid grid-cols-2 gap-3 not-prose sm:grid-cols-3 md:grid-cols-4">
+  {[
+    ["background", "bg-background border"],
+    ["foreground", "bg-foreground"],
+    ["card", "bg-card border"],
+    ["primary", "bg-primary"],
+    ["secondary", "bg-secondary"],
+    ["muted", "bg-muted"],
+    ["accent", "bg-accent"],
+    ["destructive", "bg-destructive"],
+    ["border", "bg-border"],
+    ["ring", "bg-ring"],
+    ["chart-1", "bg-chart-1"],
+    ["chart-2", "bg-chart-2"],
+    ["chart-3", "bg-chart-3"],
+    ["chart-4", "bg-chart-4"],
+    ["chart-5", "bg-chart-5"],
+  ].map(([name, cls]) => (
+    <div key={name} className="flex flex-col gap-2">
+      <div className={`h-16 w-full rounded-md ${cls}`} />
+      <code className="text-xs">{name}</code>
+    </div>
+  ))}
+</div>
+
+## Usage
+
+```tsx
+<div className="bg-primary text-primary-foreground">Primary surface</div>
+<div className="bg-card text-card-foreground border">Card surface</div>
+```
+
+## Light / dark mode
+
+Themes are toggled by adding/removing the `.dark` class on `<html>`, driven
+by `next-themes` in `apps/web`. Every semantic token (`background`,
+`foreground`, `card`, `primary`, ...) has both a light and dark value, so
+components never branch on theme directly — they just use the semantic
+class names.
