@@ -1,0 +1,11 @@
+{
+  "extends": "@repo/tsconfig/react-library.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", ".storybook", "cypress"],
+  "exclude": ["node_modules", "dist"]
+}
