@@ -11,7 +11,7 @@ import {
   FormMessage,
 } from "../../src/components/form";
 import { Input } from "../../src/components/input";
-import { Button } from "@/components/button/button";
+import { Button } from "../../src/components/button/button";
 
 const schema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters."),
