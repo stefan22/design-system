@@ -1,1 +1,1 @@
-npx turbo run check-types lint test
+npx turbo run check-types lint

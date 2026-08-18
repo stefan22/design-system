@@ -33,6 +33,7 @@ const config: StorybookConfig = {
     viteConfig.resolve.alias = {
       ...(viteConfig.resolve.alias ?? {}),
       "@": path.resolve(import.meta.dirname, "../src"),
+      "@ui": path.resolve(import.meta.dirname, "../src"),
     };
     return viteConfig;
   },

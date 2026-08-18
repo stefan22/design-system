@@ -63,9 +63,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browser
-        run: npx playwright install --with-deps chromium
-        working-directory: packages/ui
-
-      - name: Test
-        run: npm run test
+      - name: Cypress component tests (@repo/ui)
+        uses: cypress-io/github-action@v6
+        with:
+          working-directory: packages/ui
+          install: false
+          component: true
