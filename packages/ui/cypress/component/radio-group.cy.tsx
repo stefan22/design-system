@@ -15,7 +15,16 @@ describe("RadioGroup", () => {
     cy.mount(<RadioGroupHarness />);
     cy.get('[data-cy="radio-a"]').should("have.attr", "data-state", "checked");
     cy.get('[data-cy="radio-a"]').focus();
-    cy.focused().type("{downarrow}");
+    // Radix's roving-focus-group navigation depends on a real, trusted
+    // keydown: it moves focus via a `setTimeout`-deferred call and tracks
+    // "was this an arrow-key press" via a raw `document.addEventListener`
+    // listener (see @radix-ui/react-roving-focus + @radix-ui/react-radio-group).
+    // Cypress's `.trigger("keydown", ...)` dispatches a synthetic, untrusted
+    // event that doesn't reliably drive that flow, so the assertion below
+    // just times out with the selection never moving. `cy.realPress` (from
+    // cypress-real-events) dispatches an actual OS-level key event via CDP,
+    // which behaves like a real user keypress and Radix picks it up correctly.
+    cy.realPress("ArrowDown");
     cy.get('[data-cy="radio-b"]').should("have.attr", "data-state", "checked");
   });
 

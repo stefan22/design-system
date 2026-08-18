@@ -1,4 +1,5 @@
 import "../../src/styles/globals.css";
+import "cypress-real-events";
 import { mount } from "cypress/react";
 
 declare global {
