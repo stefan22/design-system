@@ -19,7 +19,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "cy:run": "cypress run --component",
-    "cy:open": "cypress open --component"
+    "cy:open": "cypress open --component",
+    "check-types": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "5.9.1",
