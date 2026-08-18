@@ -4,7 +4,7 @@ A Turborepo-managed component design system: a shared UI library built on
 shadcn/ui (new-york style) + Tailwind CSS v4, documented and tested with
 Storybook 10, and consumed by a Next.js 16 demo application.
 
-## Stack :rocket:
+## Stack &nbsp; :rocket:
 
 | Layer                  | Tooling                                                                |
 | ---------------------- | ---------------------------------------------------------------------- |
@@ -19,7 +19,9 @@ Storybook 10, and consumed by a Next.js 16 demo application.
 | Theming                | `next-themes` (class-based light/dark mode)                            |
 | Lint / format          | ESLint 9 config (+ `eslint-plugin-jsx-a11y`), Prettier                 |
 
-## Folder structure
+<br />
+
+## Folder structure &nbsp; 🚧
 
 ```
 design-system/
@@ -39,25 +41,26 @@ design-system/
 └── package.json              root, npm workspaces
 ```
 
-## Getting started
+<br />
 
-Requires Node 20+ and npm 10+.
+## Getting started &nbsp; ☕
+
+Requires Node 20+ and npm 10+.  
+Installs and links every workspace (`apps/web`, `packages/ui`, `packages/tailwind-config`, `packages/tsconfig`) from the root.
 
 ```bash
 npm install
 ```
 
-Installs and links every workspace (`apps/web`, `packages/ui`, `packages/tailwind-config`, `packages/tsconfig`) from the root.
-
 ### Running Demo app
+
+Local dev env: `http://localhost:3000`.
 
 ```bash
 npm run dev --workspace web
 # or from apps/web:
 npm run dev
 ```
-
-Local dev env: `http://localhost:3000`.
 
 ### Running Storybook
 
@@ -70,6 +73,7 @@ npm run build-storybook
 ### Running tests
 
 **Cypress Component Testing**
+Specs live under `cypress/component/` and cover each primitive's key interactions (click, keyboard nav, form validation, etc.).
 
 ```bash
 cd packages/ui
@@ -77,15 +81,13 @@ npm run test      # headless (cypress run --component)
 npm run cy:open   # interactive runner
 ```
 
-Specs live under `cypress/component/` and cover each primitive's key interactions (click, keyboard nav, form validation, etc.).
-
 ### Lint
+
+Runs ESLint across every workspace via the Turborepo `lint` pipeline
 
 ```bash
 npm run lint
 ```
-
-Runs ESLint across every workspace via the Turborepo `lint` pipeline
 
 ### Build
 
@@ -93,7 +95,9 @@ Runs ESLint across every workspace via the Turborepo `lint` pipeline
 npm run build
 ```
 
-## CI/CD
+<br />
+
+## CI/CD &nbsp; 🏗️
 
 ### Husky
 
@@ -105,7 +109,9 @@ npm run build
 Runs on every Pull Requests (targeting main branch). Three separate jobs: `lint`, `check-types`, and `test` which runs Cypress  
 for `packages/ui` via `cypress-io/github-action`.
 
-## Design tokens
+<br />
+
+## Design tokens &nbsp; ⚛️
 
 All color, radius, shadow, and font tokens live at:
 `packages/tailwind-config/src/theme.css`.  
@@ -113,7 +119,9 @@ Colors are OKLCH values exposed as CSS variables, re-themed for dark mode under 
 mapped to Tailwind v4 utilities via `@theme`.  
 Both `packages/ui` and `apps/web` import this file
 
-## Adding a new shadcn component
+<br />
+
+## Adding a new shadcn component &nbsp; 🍩
 
 Shadcn registry -> `https://ui.shadcn.com/r/styles/new-york-v4/`
 
