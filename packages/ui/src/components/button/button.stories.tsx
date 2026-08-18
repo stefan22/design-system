@@ -83,6 +83,65 @@ export const Disabled: Story = {
   args: { children: "Disabled", disabled: true },
 };
 
+// Statelessly renders each pseudo-state (rest / hover / focus-visible /
+// disabled) side by side so you can eyeball them without moving a mouse.
+// A real :hover can only ever apply to whatever's under the pointer *right
+// now*, so a play-function that hovers each button in turn can't show them
+// all at once -- instead this forces each column by applying the exact same
+// utility classes the component's own hover:/focus-visible: rules use, just
+// unconditionally. It's the actual CSS the browser would apply, not a mock.
+const STATE_VARIANTS = [
+  { variant: "default", hover: "bg-primary/90" },
+  { variant: "destructive", hover: "bg-destructive/90" },
+  { variant: "outline", hover: "bg-accent text-accent-foreground" },
+  { variant: "secondary", hover: "bg-secondary/80" },
+  { variant: "ghost", hover: "bg-accent text-accent-foreground" },
+  { variant: "link", hover: "underline" },
+] as const;
+const FORCED_FOCUS_VISIBLE = "border-ring ring-[3px] ring-ring/50";
+
+export const States: Story = {
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <table className="text-sm">
+      <thead>
+        <tr className="[&>th]:px-3 [&>th]:pb-2 [&>th]:text-left [&>th]:font-medium">
+          <th>Variant</th>
+          <th>Rest</th>
+          <th>Hover</th>
+          <th>Focus-visible</th>
+          <th>Disabled</th>
+        </tr>
+      </thead>
+      <tbody>
+        {STATE_VARIANTS.map(({ variant, hover }) => (
+          <tr key={variant} className="[&>td]:p-3">
+            <td className="capitalize">{variant}</td>
+            <td>
+              <Button variant={variant}>{variant}</Button>
+            </td>
+            <td>
+              <Button variant={variant} className={hover}>
+                {variant}
+              </Button>
+            </td>
+            <td>
+              <Button variant={variant} className={FORCED_FOCUS_VISIBLE}>
+                {variant}
+              </Button>
+            </td>
+            <td>
+              <Button variant={variant} disabled>
+                {variant}
+              </Button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ),
+};
+
 export const Clickable: Story = {
   args: { children: "Click me" },
   play: async ({ args, canvasElement }) => {

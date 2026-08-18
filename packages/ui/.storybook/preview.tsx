@@ -4,6 +4,7 @@ import "../src/styles/globals.css";
 
 const preview: Preview = {
   parameters: {
+    options: {order: ["Introduction","Foundations","Components"]},
     controls: {
       matchers: {
         color: /(background|color)$/i,
