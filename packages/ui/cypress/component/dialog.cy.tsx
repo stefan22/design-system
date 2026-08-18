@@ -9,7 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../../src/components/dialog";
-import { Button } from "../../src/components/button";
+import { Button } from "@/components/button/button";
 
 function DialogHarness() {
   return (

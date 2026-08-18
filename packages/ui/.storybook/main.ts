@@ -16,6 +16,17 @@ const config: StorybookConfig = {
   },
   typescript: {
     reactDocgen: "react-docgen-typescript",
+    reactDocgenTypescriptOptions: {
+      // Docgen only makes sense for actual component source files.
+      // The plugin's own default ("**/*.tsx") is evaluated with a glob
+      // matcher that skips dot-directories (e.g. .storybook) by default,
+      // which is what produced the "not included in the active
+      // TypeScript project" warning for preview.tsx. Scoping this to
+      // src/**/*.tsx is both the actual fix and the semantically correct
+      // setting, since preview.tsx/main.ts aren't components anyway.
+      include: ["src/**/*.tsx"],
+      exclude: ["**/*.stories.tsx"],
+    },
   },
   viteFinal: async (viteConfig) => {
     viteConfig.resolve = viteConfig.resolve ?? {};
